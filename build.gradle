@@ -1,7 +1,7 @@
 plugins {
   id 'application'
   id 'eclipse'
-  id 'com.github.johnrengelman.shadow' version '2.0.2'
+  id 'com.github.johnrengelman.shadow' version '5.1.0'
 }
 
 defaultTasks 'shadowJar'
@@ -21,12 +21,12 @@ def doOnChange = './gradlew classes'
 
 dependencies {
   compile "io.vertx:vertx-core:$vertxVersion"
-  compile 'io.vertx:vertx-config:3.5.1'
-  compile 'io.vertx:vertx-web:3.5.1'
-  compile 'io.vertx:vertx-web-api-contract:3.5.1'
-  compile 'io.vertx:vertx-web-client:3.5.1'
+  compile "io.vertx:vertx-config:$vertxVersion"
+  compile "io.vertx:vertx-web:$vertxVersion"
+  compile "io.vertx:vertx-web-api-contract:$vertxVersion"
+  compile "io.vertx:vertx-web-client:$vertxVersion"
   compile 'org.apache.commons:commons-rdf-rdf4j:0.5.0'
-  compile 'com.google.code.gson:gson:2.8.2'
+  compile 'com.google.code.gson:gson:2.8.5'
   
   testCompile "junit:junit:4.12"
   testCompile "io.vertx:vertx-unit:$vertxVersion"
@@ -46,6 +46,12 @@ run {
   args = ['run', mainVerticleName, "--redeploy=$watchForChange", "--launcher-class=$mainClassName", "--on-redeploy=$doOnChange"]
 }
 
-task wrapper(type: Wrapper) {
-  gradleVersion = '4.5.1'
+apply plugin: 'java'
+
+compileJava {
+  options.compilerArgs << '-parameters'
+}
+
+wrapper {
+  gradleVersion = '5.5.1'
 }
