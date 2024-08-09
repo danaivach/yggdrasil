@@ -1,0 +1,19 @@
+{
+  "http-config" : {
+  "host" : "172.27.52.55",
+  "port" : 8080,
+  "base-uri" : "http://172.27.52.55:8080"
+},
+  "notification-config" : {
+    "enabled" : true
+  },
+  "environment-config" : {
+    "enabled" : true,
+    "ontology" : "hmas",
+    "workspaces" : [
+      {
+        "name" : "61"
+      }
+    ]
+  }
+}
