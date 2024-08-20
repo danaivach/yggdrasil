@@ -10,9 +10,24 @@
   "environment-config" : {
     "enabled" : true,
     "ontology" : "hmas",
+    "known-artifacts" : [
+      {
+        "class" : "http://example.org/Counter",
+        "template" : "org.hyperagents.yggdrasil.cartago.artifacts.CounterHMAS"
+      }
+    ],
     "workspaces" : [
       {
-        "name" : "61"
+        "name": "61",
+        "artifacts": [
+          {
+            "name": "c0",
+            "class": "http://example.org/Counter",
+            "init-params": [
+              5
+            ]
+          }
+        ]
       }
     ]
   }
