@@ -8,22 +8,13 @@
 @prefix ex: <http://example.org/> .
 @prefix jacamo: <https://purl.org/hmas/jacamo/> .
 
-<http://localhost:8080/workspaces/test/artifacts/c0/#artifact> a td:Thing, hmas:Artifact,
-    ex:Counter;
-  td:title "c0";
+<http://localhost:8080/workspaces/test/artifacts/body_test_agent/#artifact> a td:Thing,
+    hmas:Artifact, jacamo:Body;
+  td:title "test_agent";
   td:hasSecurityConfiguration [ a wotsec:NoSecurityScheme
     ];
-  td:hasActionAffordance [ a td:ActionAffordance, ex:Increment;
-      td:name "inc";
-      td:title "inc";
-      td:hasForm [
-          htv:methodName "POST";
-          hctl:hasTarget <http://localhost:8080/workspaces/test/artifacts/c0/increment>;
-          hctl:forContentType "application/json";
-          hctl:hasOperationType td:invokeAction
-        ]
-    ], [ a td:ActionAffordance, <https://purl.org/hmas/websub/subscribeToArtifact>;
-      td:name "subscribeToArtifact";
+  td:hasActionAffordance [ a td:ActionAffordance, <https://purl.org/hmas/websub/subscribeToAgent>;
+      td:name "subscribeToAgent";
       td:hasForm [
           htv:methodName "POST";
           hctl:hasTarget <http://localhost:8080/hub/>;
@@ -40,8 +31,8 @@
               js:propertyName "callbackIri"
             ]
         ]
-    ], [ a td:ActionAffordance, <https://purl.org/hmas/websub/unsubscribeFromArtifact>;
-      td:name "unsubscribeFromArtifact";
+    ], [ a td:ActionAffordance, <https://purl.org/hmas/websub/unsubscribeFromAgent>;
+      td:name "unsubscribeFromAgent";
       td:hasForm [
           htv:methodName "POST";
           hctl:hasTarget <http://localhost:8080/hub/>;
@@ -60,5 +51,5 @@
         ]
     ] .
 
-<http://localhost:8080/workspaces/test/artifacts/c0/> a hmas:ResourceProfile;
-  hmas:isProfileOf <http://localhost:8080/workspaces/test/artifacts/c0/#artifact> .
+<http://localhost:8080/workspaces/test/artifacts/body_test_agent/> a hmas:ResourceProfile;
+  hmas:isProfileOf <http://localhost:8080/workspaces/test/artifacts/body_test_agent/#artifact> .
